@@ -1,33 +1,21 @@
 const projects = [
   {
-    title: 'Evergreen Studio',
-    category: 'Brand & Web Design',
+    title: 'Udo Okonjo',
+    category: 'Personal Portfolio',
     color: 'bg-sage/20',
+    url: 'https://udookonjo.com',
   },
   {
-    title: 'Nova Fitness',
-    category: 'E-commerce',
+    title: 'Fine and Country',
+    category: 'Real Estate',
     color: 'bg-mist/30',
+    url: 'https://fineandcountry.ng',
   },
   {
-    title: 'Maple & Co',
-    category: 'Landing Page',
+    title: 'Compound Africa',
+    category: 'Fintech',
     color: 'bg-stone',
-  },
-  {
-    title: 'Drift Coffee',
-    category: 'Restaurant Site',
-    color: 'bg-sage/10',
-  },
-  {
-    title: 'Cloudform',
-    category: 'SaaS Website',
-    color: 'bg-mist/20',
-  },
-  {
-    title: 'Artisan Goods',
-    category: 'Portfolio',
-    color: 'bg-stone/80',
+    url: 'https://compoundafrica.com',
   },
 ]
 
@@ -48,7 +36,9 @@ export default function Portfolio() {
           {projects.map((project, index) => (
             <a
               key={index}
-              href="#"
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group block"
             >
               <div
@@ -64,7 +54,7 @@ export default function Portfolio() {
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-slate/0 group-hover:bg-slate/5 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity text-slate font-medium">
-                    View Project
+                    Visit Site
                   </span>
                 </div>
               </div>
@@ -77,23 +67,6 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* View more */}
-        <div className="mt-12 text-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors font-medium"
-          >
-            View all projects
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </div>
       </div>
     </section>
   )
