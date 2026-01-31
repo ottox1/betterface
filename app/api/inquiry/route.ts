@@ -103,13 +103,19 @@ function formatActivityLog(data: FormData): string {
 
 async function createMondayLead(data: FormData, token: string) {
   // Create the lead item
-  const columnValues = JSON.stringify({
+  const columns: Record<string, unknown> = {
     lead_company: data.businessName,
     text: data.role || '',
     lead_email: { email: data.email, text: data.email },
-    lead_phone: data.phone ? { phone: data.phone, countryShortName: '' } : null,
     lead_status: { label: 'New Lead' },
-  })
+  }
+  
+  // Only add phone if provided
+  if (data.phone) {
+    columns.lead_phone = { phone: data.phone, countryShortName: '' }
+  }
+  
+  const columnValues = JSON.stringify(columns)
 
   const createItemQuery = `
     mutation {
@@ -123,6 +129,8 @@ async function createMondayLead(data: FormData, token: string) {
     }
   `
 
+  console.log('Creating Monday lead with query:', createItemQuery)
+  
   const createResponse = await fetch(MONDAY_API_URL, {
     method: 'POST',
     headers: {
@@ -133,10 +141,16 @@ async function createMondayLead(data: FormData, token: string) {
   })
 
   const createResult = await createResponse.json()
+  console.log('Monday API response:', JSON.stringify(createResult))
   
   if (createResult.errors) {
     console.error('Monday create item error:', createResult.errors)
-    throw new Error('Failed to create lead')
+    throw new Error('Failed to create lead: ' + JSON.stringify(createResult.errors))
+  }
+  
+  if (!createResult.data?.create_item?.id) {
+    console.error('Monday unexpected response:', createResult)
+    throw new Error('Unexpected Monday response')
   }
 
   const itemId = createResult.data.create_item.id
