@@ -17,7 +17,7 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-slate leading-tight tracking-tight mb-6">
           Your business deserves
           <br />
-          <span className="text-sage">a better face online.</span>
+          <span className="text-sage">a digital face that stands out.</span>
         </h1>
 
         {/* Subhead */}

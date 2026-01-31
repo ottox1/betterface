@@ -49,13 +49,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-medium">Better Face</span>
+            <span className="text-xl font-medium">Digiface</span>
             <span className="text-white/40">|</span>
             <span className="text-sm text-white/40">Web design for small businesses</span>
           </div>
 
           <p className="text-sm text-white/40">
-            &copy; {currentYear} Better Face. All rights reserved.
+            &copy; {currentYear} Digiface. All rights reserved.
           </p>
         </div>
       </div>

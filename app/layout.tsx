@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Better Face | Websites that work. Built in days, not months.',
-  description: 'Better Face is a web design agency that builds beautiful, high-performance websites in 3 days or less.',
+  title: 'Digiface | Websites that work. Built in days, not months.',
+  description: 'Digiface is a web design agency that builds beautiful, high-performance websites in 3 days or less.',
 }
 
 export default function RootLayout({
