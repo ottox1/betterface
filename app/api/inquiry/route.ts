@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const MONDAY_API_URL = 'https://api.monday.com/v2'
-const LEADS_BOARD_ID = '5091042356'
+const LEADS_BOARD_ID = 5091042356
 
 interface FormData {
   name: string
@@ -101,96 +101,22 @@ function formatActivityLog(data: FormData): string {
   return html
 }
 
-async function createMondayLead(data: FormData, token: string) {
-  // Create the lead item
-  const columns: Record<string, unknown> = {
-    lead_company: data.businessName,
-    text: data.role || '',
-    lead_email: { email: data.email, text: data.email },
-    lead_status: { label: 'New Lead' },
-  }
-  
-  // Only add phone if provided
-  if (data.phone) {
-    columns.lead_phone = { phone: data.phone, countryShortName: '' }
-  }
-  
-  const columnValues = JSON.stringify(columns)
-
-  const createItemQuery = `
-    mutation {
-      create_item(
-        board_id: ${LEADS_BOARD_ID},
-        item_name: "${data.name.replace(/"/g, '\\"')}",
-        column_values: ${JSON.stringify(columnValues)}
-      ) {
-        id
-      }
-    }
-  `
-
-  console.log('Creating Monday lead with query:', createItemQuery)
-  
-  const createResponse = await fetch(MONDAY_API_URL, {
+async function mondayRequest(query: string, variables: Record<string, unknown>, token: string) {
+  const response = await fetch(MONDAY_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': token,
     },
-    body: JSON.stringify({ query: createItemQuery }),
+    body: JSON.stringify({ query, variables }),
   })
-
-  const createResult = await createResponse.json()
-  console.log('Monday API response:', JSON.stringify(createResult))
-  
-  if (createResult.errors) {
-    console.error('Monday create item error:', createResult.errors)
-    throw new Error('Failed to create lead: ' + JSON.stringify(createResult.errors))
-  }
-  
-  if (!createResult.data?.create_item?.id) {
-    console.error('Monday unexpected response:', createResult)
-    throw new Error('Unexpected Monday response')
-  }
-
-  const itemId = createResult.data.create_item.id
-
-  // Add the full inquiry as an activity update
-  const activityBody = formatActivityLog(data)
-  
-  const updateQuery = `
-    mutation {
-      create_update(
-        item_id: ${itemId},
-        body: ${JSON.stringify(activityBody)}
-      ) {
-        id
-      }
-    }
-  `
-
-  const updateResponse = await fetch(MONDAY_API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    },
-    body: JSON.stringify({ query: updateQuery }),
-  })
-
-  const updateResult = await updateResponse.json()
-
-  if (updateResult.errors) {
-    console.error('Monday create update error:', updateResult.errors)
-    // Don't throw - lead was created, just log failed
-  }
-
-  return itemId
+  return response.json()
 }
 
 export async function POST(request: NextRequest) {
   try {
     const data: FormData = await request.json()
+    console.log('Received inquiry:', data.name, data.email)
 
     // Validate required fields
     const required = ['name', 'email', 'businessName', 'industry', 'businessStage', 'hasLogo', 'hasBrandAssets', 'projectType', 'timeline', 'projectDescription']
@@ -209,23 +135,69 @@ export async function POST(request: NextRequest) {
 
     if (!mondayToken) {
       console.error('MONDAY_API_TOKEN not configured')
-      // Still return success to user, but log the error
-      console.log('Inquiry received (Monday not configured):', JSON.stringify(data, null, 2))
       return NextResponse.json({ 
         success: true, 
-        message: 'Inquiry received' 
+        message: 'Inquiry received (CRM offline)' 
       })
     }
 
-    // Create lead in Monday
-    const leadId = await createMondayLead(data, mondayToken)
+    // Build column values
+    const columnValues: Record<string, unknown> = {
+      lead_company: data.businessName,
+      text: data.role || '',
+      lead_email: { email: data.email, text: data.email },
+      lead_status: { label: 'New Lead' },
+    }
+    
+    if (data.phone) {
+      columnValues.lead_phone = { phone: data.phone, countryShortName: '' }
+    }
 
-    console.log(`Lead created in Monday: ${leadId}`)
+    // Create the lead
+    const createQuery = `
+      mutation CreateLead($boardId: ID!, $itemName: String!, $columnValues: JSON!) {
+        create_item(board_id: $boardId, item_name: $itemName, column_values: $columnValues) {
+          id
+        }
+      }
+    `
+
+    const createResult = await mondayRequest(createQuery, {
+      boardId: LEADS_BOARD_ID,
+      itemName: data.name,
+      columnValues: JSON.stringify(columnValues),
+    }, mondayToken)
+
+    console.log('Create result:', JSON.stringify(createResult))
+
+    if (createResult.errors || !createResult.data?.create_item?.id) {
+      console.error('Failed to create lead:', createResult)
+      throw new Error('Monday API error')
+    }
+
+    const itemId = createResult.data.create_item.id
+
+    // Add activity log
+    const updateQuery = `
+      mutation CreateUpdate($itemId: ID!, $body: String!) {
+        create_update(item_id: $itemId, body: $body) {
+          id
+        }
+      }
+    `
+
+    const activityBody = formatActivityLog(data)
+    await mondayRequest(updateQuery, {
+      itemId: parseInt(itemId),
+      body: activityBody,
+    }, mondayToken)
+
+    console.log('Lead created successfully:', itemId)
 
     return NextResponse.json({ 
       success: true, 
       message: 'Inquiry received successfully',
-      leadId 
+      leadId: itemId
     })
 
   } catch (error) {
