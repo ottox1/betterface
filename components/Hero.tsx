@@ -32,7 +32,7 @@ export default function Hero() {
             href="#pricing"
             className="px-8 py-4 bg-sage text-white font-medium rounded-full hover:bg-sage-dark transition-all hover:shadow-lg hover:shadow-sage/20"
           >
-            Let&apos;s talk about your project
+            Get your website in 3 days
           </a>
           <a
             href="#work"
