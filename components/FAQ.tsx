@@ -4,34 +4,34 @@ import { useState } from 'react'
 
 const faqs = [
   {
-    question: 'How do you build so fast?',
+    question: 'How do you work so fast?',
     answer:
-      "We've refined our process over years of building websites. We use modern tools, proven templates as starting points, and focus only on what matters. No meetings for the sake of meetings. No bureaucracy. Just focused work.",
+      "We're a small team with years of experience. No layers of management, no endless meetings. We use proven tools and templates as starting points, then customize everything for you. When it's just a few people who know what they're doing, things move quickly.",
   },
   {
-    question: 'What do I need to provide?',
+    question: 'What do I need to give you?',
     answer:
-      "We'll need your brand assets (logo, colors, fonts if you have them), content (copy and images), and about 30 minutes of your time for a kickoff call. If you don't have content ready, we can help with that too.",
+      "Your logo, brand colors, fonts if you have them, and the content you want on your site (text and images). We'll also need about 30 minutes of your time for a quick call to understand your vision. Don't have content ready? We can help with that too.",
   },
   {
-    question: "What's included in maintenance?",
+    question: 'What does maintenance include?',
     answer:
-      'Our maintenance plans cover regular updates, security patches, content changes, performance monitoring, and priority support. Plans start at $100/month depending on your needs.',
+      "We keep your site healthy — regular updates, security patches, content changes when you need them, and performance checks. We're also just a message away if something breaks or you need a quick tweak. Plans start at $100/month.",
   },
   {
-    question: 'Can you work with existing sites?',
+    question: 'Can you fix my existing site?',
     answer:
-      "Absolutely. Our Refresh package is designed exactly for this. We can modernize, fix bugs, improve performance, and make your existing site shine—without starting from scratch.",
+      "That's exactly what our Refresh package is for. We'll modernize the look, fix what's broken, speed things up, and make sure it works on mobile. You don't always need to start from scratch.",
   },
   {
-    question: 'What platforms do you build on?',
+    question: 'What platforms do you use?',
     answer:
-      "We primarily build with modern frameworks like Next.js, but we're flexible. We can work with WordPress, Webflow, Shopify, or whatever makes sense for your project and long-term needs.",
+      "We mostly build with modern tools like Next.js, but we're flexible. If you need WordPress, Webflow, Shopify, or something else — we'll work with whatever makes sense for your project and what you'll need long-term.",
   },
   {
-    question: 'Do you offer revisions?',
+    question: 'How many revisions do I get?',
     answer:
-      "Yes. We include two rounds of revisions in every package. Our iterative process means you're involved throughout, so by the time we reach the final stage, there are rarely surprises.",
+      "Every package includes three rounds of revisions. But honestly, because we work closely with you throughout, there are rarely big surprises by the end. Most of our clients are happy before we even hit round three.",
   },
 ]
 
@@ -43,9 +43,9 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="font-serif italic text-sage mb-3">Questions</p>
+          <p className="font-serif italic text-sage mb-3">Common questions</p>
           <h2 className="text-3xl md:text-4xl font-medium text-slate">
-            Frequently Asked
+            Things people ask us
           </h2>
         </div>
 
@@ -88,12 +88,12 @@ export default function FAQ() {
 
         {/* Contact prompt */}
         <div className="mt-12 text-center">
-          <p className="text-slate/60 mb-4">Still have questions?</p>
+          <p className="text-slate/60 mb-4">Got something else on your mind?</p>
           <a
-            href="#"
+            href="#pricing"
             className="inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors font-medium"
           >
-            Get in touch
+            Reach out — we&apos;re happy to chat
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"

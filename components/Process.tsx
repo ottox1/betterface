@@ -1,9 +1,9 @@
 const steps = [
   {
     day: '01',
-    title: 'Discovery & Design',
+    title: 'We get to know you',
     description:
-      'We dive deep into your brand, goals, and vision. By end of day, you have a clear design direction.',
+      'We hop on a call to understand your business, your goals, and what you need. By the end of the day, we send you a design direction you can react to.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -17,9 +17,9 @@ const steps = [
   },
   {
     day: '02',
-    title: 'Build & Refinement',
+    title: 'We build, you review',
     description:
-      'Your website comes to life. We build, you review, we refine. Fast iteration, no waiting.',
+      'Our team gets to work bringing your site to life. You see progress, give feedback, and we refine until it feels right.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -33,9 +33,9 @@ const steps = [
   },
   {
     day: '03',
-    title: 'Launch & Handoff',
+    title: 'We hand you the keys',
     description:
-      'We deploy your site, hand over the keys, and make sure you know how to run it.',
+      'Your site goes live. We walk you through everything, answer your questions, and make sure you feel confident running it yourself.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -55,9 +55,9 @@ export default function Process() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="font-serif italic text-sage mb-3">The process</p>
+          <p className="font-serif italic text-sage mb-3">How we work together</p>
           <h2 className="text-3xl md:text-4xl font-medium text-slate">
-            How it works
+            Simple, personal, fast
           </h2>
         </div>
 

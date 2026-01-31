@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="relative max-w-4xl mx-auto px-6 py-24 text-center">
         {/* Editorial accent */}
         <p className="font-serif italic text-sage mb-6 text-lg">
-          Web design for small businesses
+          A small team that builds beautiful websites
         </p>
 
         {/* Main headline */}
@@ -22,29 +22,29 @@ export default function Hero() {
 
         {/* Subhead */}
         <p className="text-lg md:text-xl text-slate/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-          We help small businesses stand out with beautiful, professional websites.
-          Affordable pricing. Fast turnaround. Real results.
+          We&apos;re a small design team helping businesses like yours look incredible online.
+          You tell us your vision, we bring it to life — personally, quickly, and without the agency price tag.
         </p>
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="#"
+            href="#pricing"
             className="px-8 py-4 bg-sage text-white font-medium rounded-full hover:bg-sage-dark transition-all hover:shadow-lg hover:shadow-sage/20"
           >
-            Have a website in 3 days or less
+            Let&apos;s talk about your project
           </a>
           <a
             href="#work"
             className="px-8 py-4 text-slate/70 font-medium hover:text-slate transition-colors"
           >
-            View our work
+            See what we&apos;ve built
           </a>
         </div>
 
         {/* Trust indicator */}
         <p className="mt-16 text-sm text-slate/40">
-          Trusted by small businesses across Africa
+          Working with small businesses across Africa and beyond
         </p>
       </div>
 

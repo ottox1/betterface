@@ -2,43 +2,43 @@ const tiers = [
   {
     name: 'Refresh',
     price: '$500',
-    description: 'Light touchup for existing sites',
+    description: 'Already have a site? We\'ll give it new life.',
     features: [
       'Bug fixes & updates',
       'Visual modernization',
-      'Performance tweaks',
-      'Mobile responsiveness check',
+      'Performance improvements',
+      'Mobile responsiveness',
     ],
-    cta: 'Get a Refresh',
+    cta: 'Get a quote',
     featured: false,
   },
   {
     name: 'Starter',
     price: '$1,000',
-    description: 'Perfect for new projects',
+    description: 'Starting fresh? We\'ll build it with you.',
     features: [
       'Up to 5 pages',
       'Fully responsive design',
-      'Fast 3-day turnaround',
+      'Ready in 3 days',
       'SEO fundamentals',
       'Contact form setup',
     ],
-    cta: 'Start Building',
+    cta: 'Let\'s build together',
     featured: true,
   },
   {
     name: 'Growth',
     price: '$2,000',
-    description: 'For established businesses',
+    description: 'Need more? We\'ll scale with you.',
     features: [
       'Up to 10 pages',
       'Custom animations',
       'Advanced integrations',
       'Analytics setup',
       'Priority support',
-      'Maintenance add-on available',
+      'Ongoing maintenance available',
     ],
-    cta: 'Scale Up',
+    cta: 'Talk to us',
     featured: false,
   },
 ]
@@ -49,12 +49,12 @@ export default function Pricing() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="font-serif italic text-sage mb-3">Investment</p>
+          <p className="font-serif italic text-sage mb-3">What it costs</p>
           <h2 className="text-3xl md:text-4xl font-medium text-slate mb-4">
-            Simple, transparent pricing
+            Honest pricing, no surprises
           </h2>
           <p className="text-slate/60 max-w-xl mx-auto">
-            No hidden fees. No surprises. Just clear value for your investment.
+            We keep things simple. Pick what fits, and we&apos;ll handle the rest.
           </p>
         </div>
 
@@ -149,9 +149,9 @@ export default function Pricing() {
         {/* Add-on callout */}
         <div className="mt-12 text-center">
           <p className="text-slate/60">
-            Need ongoing maintenance?{' '}
+            Need help keeping things running?{' '}
             <a href="#" className="text-sage hover:text-sage-dark transition-colors underline">
-              Ask us about our monthly plans
+              Ask about our monthly maintenance plans
             </a>
           </p>
         </div>
