@@ -133,7 +133,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href="#"
+                href="#inquiry"
                 className={`block w-full text-center py-3 rounded-full font-medium transition-all ${
                   tier.featured
                     ? 'bg-sage text-white hover:bg-sage-dark'

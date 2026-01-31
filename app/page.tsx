@@ -4,6 +4,7 @@ import Process from '@/components/Process'
 import Pricing from '@/components/Pricing'
 import Portfolio from '@/components/Portfolio'
 import FAQ from '@/components/FAQ'
+import InquiryForm from '@/components/InquiryForm'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Process />
       <Portfolio />
       <Pricing />
+      <InquiryForm />
       <FAQ />
       <Footer />
     </main>

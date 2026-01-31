@@ -29,7 +29,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="#pricing"
+            href="#inquiry"
             className="px-8 py-4 bg-sage text-white font-medium rounded-full hover:bg-sage-dark transition-all hover:shadow-lg hover:shadow-sage/20"
           >
             Get your website in 3 days
