@@ -53,6 +53,12 @@ export default function Footer() {
               >
                 FAQ
               </a>
+              <a
+                href="mailto:hellodigiface@gmail.com"
+                className="block text-white/60 hover:text-coral transition-colors"
+              >
+                hellodigiface@gmail.com
+              </a>
             </div>
           </div>
         </div>
