@@ -89,7 +89,7 @@ export default function Process() {
 
               <div className="rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/References/use somewhere.jpg"
+                  src="/images/References/use this instead.jpeg"
                   alt="Team member ready to work"
                   width={400}
                   height={500}

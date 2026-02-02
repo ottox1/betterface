@@ -80,7 +80,7 @@ export default function Hero() {
             {/* Main image container */}
             <div className="relative rounded-2xl overflow-hidden">
               <Image
-                src="/images/hero.jpg"
+                src="/images/hero 2.jpeg"
                 alt="Young creative team"
                 width={600}
                 height={450}
